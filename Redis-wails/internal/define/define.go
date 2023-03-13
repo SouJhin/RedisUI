@@ -1,6 +1,6 @@
 package define
 
-var Configname = "redis-client.conf"
+var ConfigName = "redis-client.conf"
 
 type Connection struct {
 	Identity string `json:"identity"`

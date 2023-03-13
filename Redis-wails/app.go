@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 
+	"changeme/internal/define"
 	"changeme/internal/service"
 )
 
@@ -28,16 +29,23 @@ func (a *App) Greet(name string) string {
 	return fmt.Sprintf("Hello %s, It's show time!", name)
 }
 
-func (a *App) ConnectionList() interface{} {
+func (a *App) ConnectionList() H {
 	conn, err := service.ConnectionList()
 	if err != nil {
-		return map[string]interface{}{
+		return M{
 			"code": -1,
 			"msg":  "ERROR:" + err.Error(),
 		}
 	}
-	return map[string]interface{}{
+	return M{
 		"code": 200,
 		"data": conn,
+	}
+}
+
+func (a *App) ConnectionCreate(connection *define.Connection) H {
+	return M{
+		"code": 200,
+		"msg":  "connection success",
 	}
 }
